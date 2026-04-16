@@ -1,0 +1,270 @@
+/* ==========================================================================
+   1. БАЗОВЫЕ НАСТРОЙКИ (MOBILE FIRST)
+   ========================================================================== */
+:root {
+  --primary-blue: #0055ff;
+  --dark: #1a1a1a;
+  --light-bg: #f5f5f5;
+  --white: #ffffff;
+  --gray: #666;
+}
+
+html {
+  scroll-behavior: smooth !important;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  color: var(--dark);
+  line-height: 1.4;
+  background-color: var(--white);
+}
+
+/* Контейнеры и отступы */
+.section {
+  padding: 40px 20px;
+}
+.section h2 {
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+/* Кнопки */
+.btn-primary,
+.btn-secondary {
+  display: inline-block;
+  background: var(--primary-blue);
+  color: var(--white);
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  padding: 12px 24px;
+  width: 100%;
+}
+.btn-secondary {
+  padding: 10px 0;
+  width: 100%;
+  font-size: 0.8rem;
+}
+
+/* Header (Mobile) */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: var(--white);
+
+  /* Свойства для фиксации */
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Чтобы хедер всегда был поверх контента */
+
+  /* Добавим легкую тень, чтобы отделять хедер от контента при скролле */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+
+  background-color: #ffffff;
+  box-shadow:
+    0px 2px 4px rgba(46, 47, 66, 0.08),
+    0px 1px 2px rgba(46, 47, 66, 0.16);
+}
+.nav {
+  display: none;
+} /* Скрываем меню на мобильных (обычно гамбургер) */
+
+.lang-switcher {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  color: #2e2f42;
+  padding: 4px 8px;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lang-btn.active {
+  color: #4d5ae5; /* Твой акцентный синий */
+  border-bottom: 2px solid #4d5ae5;
+}
+
+.lang-btn:hover:not(.active) {
+  color: #404bbf;
+}
+
+/* Hero (Mobile) */
+.hero {
+  height: 60vh;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("/image/hero.jpg") center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  color: var(--white);
+}
+.hero-content h1 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+.hero-content p {
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+/* Features (Mobile - вертикально) */
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 30px 20px;
+  background: var(--light-bg);
+}
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.feature-item .icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+/* Grids (Mobile - в одну колонку) */
+.grid-four {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.category-card,
+.product-card {
+  text-align: center;
+}
+.img-placeholder img,
+.product-card img {
+  width: 100%;
+  height: auto;
+}
+
+/* ==========================================================================
+   2. ПЛАНШЕТ (Breakpoint: 768px)
+   ========================================================================== */
+@media (min-width: 768px) {
+  .section {
+    padding: 60px 40px;
+  }
+  .section h2 {
+    text-align: left;
+    font-size: 1.8rem;
+  }
+
+  /* Показываем навигацию */
+  .nav {
+    display: block;
+  }
+  .nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: var(--dark);
+  }
+
+  /* Hero */
+  .hero {
+    height: 70vh;
+    justify-content: flex-start;
+    text-align: left;
+    padding: 0 10%;
+  }
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  .hero-content p {
+    font-size: 1.1rem;
+  }
+  .btn-primary {
+    width: auto;
+  }
+
+  /* Features - в ряд */
+  .features {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .feature-item {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  /* Сетка 2х2 */
+  .grid-four {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .constructor-banner {
+    padding: 60px 10%;
+  }
+}
+
+/* ==========================================================================
+   3. ДЕСКТОП (Breakpoint: 1158px)
+   ========================================================================== */
+@media (min-width: 1158px) {
+  .header,
+  .section,
+  .footer {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* Навигация шире */
+  .nav a {
+    margin: 0 20px;
+  }
+
+  /* Hero */
+  .hero {
+    height: 85vh;
+    padding: 0 5%;
+  }
+  .hero-content h1 {
+    font-size: 3.5rem;
+    max-width: 700px;
+  }
+
+  /* Сетка в 4 колонки */
+  .grid-four {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Footer */
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

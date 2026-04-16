@@ -118,7 +118,7 @@ body {
   height: 60vh;
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("./image/hero.jpg") center/cover;
+    url("../image/hero.jpg") center/cover;
   display: flex;
   align-items: center;
   justify-content: center;

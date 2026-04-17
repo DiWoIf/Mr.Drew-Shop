@@ -13,21 +13,95 @@
   <body id="main">
     <header class="header">
       <div class="logo">
-        <a href="#main"><p>Mr.Drew Shop</p></a>
+        <a href="./index.html">Mr.Drew Shop</a>
       </div>
-      <nav class="nav">
-        <a href="#categories">Обзор</a>
-        <a href="#review">О нас</a>
-        <a href="#contacts">Контакты</a>
-      </nav>
+
       <div class="lang-switcher">
-        <button class="lang-btn active" data-lang="ua">UA</button>
-        <button class="lang-btn" data-lang="en">EN</button>
-        <button class="lang-btn" data-lang="pl">PL</button>
+        <button type="button" class="lang-current">UA</button>
+        <ul class="lang-list">
+          <li><button type="button" data-lang="ua">UA</button></li>
+          <li><button type="button" data-lang="en">EN</button></li>
+          <li><button type="button" data-lang="pl">PL</button></li>
+        </ul>
       </div>
       <div class="header-icons">
-        <span>🔍</span>
+        <button type="button" class="burger-btn" data-menu-open>
+          <svg class="burger-icon" width="24" height="24">
+            <use href="./img/icons.svg#icon-burger"></use>
+          </svg>
+        </button>
       </div>
+      <div class="mobile-menu" data-menu>
+        <div class="container mobile-menu-container">
+          <button class="mobile-menu-close" data-menu-close>
+            <svg class="" width="8" height="8">
+              <use href="./img/icons.svg#icon-close"></use>
+            </svg>
+          </button>
+          <nav class="nav">
+            <ul class="nav-list-mobile">
+              <li>
+                <a href="#categories">Обзор</a>
+              </li>
+              <li><a href="#review">О нас</a></li>
+              <li><a href="#contacts">Контакты</a></li>
+            </ul>
+          </nav>
+          <address class="contacts-mobile">
+            <ul class="contacts-list-mobile">
+              <li class="contacts-item-mobile">
+                <a
+                  class="contacts-link-mobile"
+                  href="mailto:mrdrewstore@gmail.com"
+                  >mrdrewstore@gmail.com</a
+                >
+              </li>
+              <li class="contacts-item-mobile">
+                <a class="contacts-link-mobile" href="tel:+48575214889"
+                  >+48 575 214 889</a
+                >
+              </li>
+            </ul>
+          </address>
+          <ul class="header-link-list">
+            <li class="social-list">
+              <a class="social-link" href=""
+                ><svg class="social-link-icon" width="24" height="24">
+                  <use href="./img/icons.svg#icon-instagram"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="social-list">
+              <a class="social-link" href=""
+                ><svg class="social-link-icon" width="24" height="24">
+                  <use href="./img/icons.svg#icon-twitter"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="social-list">
+              <a class="social-link" href=""
+                ><svg class="social-link-icon" width="24" height="24">
+                  <use href="./img/icons.svg#icon-facebook"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="social-list">
+              <a class="social-link" href=""
+                ><svg class="social-link-icon" width="24" height="24">
+                  <use href="./img/icons.svg#icon-linkedin"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <nav class="nav-desktop">
+        <ul>
+          <li><a href="#categories">Обзор</a></li>
+          <li><a href="#review">О нас</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+        </ul>
+      </nav>
     </header>
 
     <section class="hero">
@@ -72,22 +146,22 @@
       <div class="grid-four">
         <div class="category-card">
           <div class="img-placeholder">
-            <img src="./image/smile.jpg" alt="smile" />
+            <img src="./img/smile.jpg" alt="smile" />
           </div>
         </div>
         <div class="category-card">
           <div class="img-placeholder">
-            <img src="./image/glass.jpg" alt="glass" />
+            <img src="./img/glass.jpg" alt="glass" />
           </div>
         </div>
         <div class="category-card">
           <div class="img-placeholder">
-            <img src="./image/bag.jpg" alt="bag" />
+            <img src="./img/bag.jpg" alt="bag" />
           </div>
         </div>
         <div class="category-card">
           <div class="img-placeholder">
-            <img src="./image/anime.jpg" alt="anime" />
+            <img src="./img/anime.jpg" alt="anime" />
           </div>
         </div>
       </div>
@@ -125,5 +199,6 @@
         </div>
       </div>
     </footer>
+    <script src="./js/index.js"></script>
   </body>
 </html>

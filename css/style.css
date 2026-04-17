@@ -26,6 +26,17 @@ body {
   background-color: var(--white);
 }
 
+ul,
+ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
 /* Контейнеры и отступы */
 .section {
   padding: 40px 20px;
@@ -66,7 +77,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
+  padding: 12px 16px;
   background: var(--white);
 
   /* Свойства для фиксации */
@@ -84,11 +95,78 @@ body {
     0px 2px 4px rgba(46, 47, 66, 0.08),
     0px 1px 2px rgba(46, 47, 66, 0.16);
 }
-.nav {
+
+.logo {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.17;
+  letter-spacing: 0.03em;
+  color: #05082b;
+}
+
+.logo a {
+  color: #05082b;
+}
+
+.nav-desktop {
   display: none;
-} /* Скрываем меню на мобильных (обычно гамбургер) */
+}
+/* Скрываем меню на мобильных (обычно гамбургер) */
 
 .lang-switcher {
+  position: relative; /* Чтобы список позиционировался относительно этой обертки */
+}
+
+.lang-current {
+  background: none;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Маленькая стрелочка вниз (опционально) */
+.lang-current::after {
+  content: "▼";
+  font-size: 8px;
+}
+
+.lang-list {
+  display: none; /* Прячем список */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid rgba(77, 90, 229, 0.1);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  list-style: none;
+  padding: 5px 0;
+  z-index: 10;
+}
+
+/* Когда добавим этот класс через JS — список покажется */
+.lang-switcher.is-open .lang-list {
+  display: block;
+}
+
+.lang-list button {
+  width: 100%;
+  padding: 8px 15px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.lang-list button:hover {
+  background-color: #f4f4fd;
+}
+
+/* .lang-switcher {
   display: flex;
   gap: 10px;
   align-items: center;
@@ -105,12 +183,122 @@ body {
 }
 
 .lang-btn.active {
-  color: #4d5ae5; /* Твой акцентный синий */
+  color: #4d5ae5;
   border-bottom: 2px solid #4d5ae5;
 }
 
 .lang-btn:hover:not(.active) {
   color: #404bbf;
+} */
+
+.burger-btn {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+
+.burger-icon {
+  display: block;
+  fill: #2f2f37;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.mobile-menu-container {
+  position: relative;
+  padding: 72px 28px 40px;
+  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 40px;
+}
+
+.mobile-menu-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+}
+
+.mobile-menu-nav {
+  margin-bottom: auto;
+}
+
+.nav-list-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.nav-list-mobile a {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.11;
+  letter-spacing: 0.02em;
+  color: #2e2f42;
+}
+
+.nav-list-mobile a:active,
+.nav-list-mobile a:hover {
+  color: #404bbf;
+}
+
+.contacts-list-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contacts-link-mobile {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: #434455;
+}
+
+.contacts-link-mobile:active {
+  color: #404bbf;
+}
+
+.header-link-list {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  align-items: center;
 }
 
 /* Hero (Mobile) */
@@ -118,7 +306,7 @@ body {
   height: 60vh;
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("../image/hero.jpg") center/cover;
+    url("../img/hero.jpg") center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -126,6 +314,27 @@ body {
   padding: 20px;
   color: var(--white);
 }
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  /* 0.2 — это 20% белого цвета. Картинка станет чуть светлее, но останется четкой */
+  background: rgba(255, 255, 255, 0.2);
+
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1; /* Обязательно, чтобы текст был выше высветляющего слоя */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
 .hero-content h1 {
   font-size: 1.8rem;
   margin-bottom: 15px;
@@ -184,13 +393,27 @@ body {
   }
 
   /* Показываем навигацию */
-  .nav {
+  .nav-desktop {
     display: block;
   }
   .nav a {
     margin: 0 10px;
     text-decoration: none;
     color: var(--dark);
+  }
+
+  .nav-desktop ul {
+    display: flex;
+    gap: 20px;
+  }
+
+  .burger-btn,
+  .mobile-menu {
+    display: none; /* Прячем всё мобильное */
+  }
+
+  .burger-btn {
+    display: none;
   }
 
   /* Hero */
@@ -237,7 +460,7 @@ body {
   .header,
   .section,
   .footer {
-    max-width: 1400px;
+    /* max-width: 1400px; */
     margin: 0 auto;
   }
 

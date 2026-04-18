@@ -167,6 +167,89 @@
       </div>
     </section>
 
+    <section class="section contact" id="order-form">
+      <div class="container">
+        <div class="contact-header">
+          <h2 class="section-title">Твій ідеальний принт тут</h2>
+          <p class="section-subtitle">
+            Допоможемо обрати з нашої колекції або надрукуємо твоє власне
+            зображення
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <form
+            name="consultation-form"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            class="order-form"
+          >
+            <input type="hidden" name="form-name" value="consultation-form" />
+
+            <div class="form-group">
+              <input
+                type="text"
+                name="name"
+                placeholder="Як до вас звертатися?"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <input
+                type="tel"
+                name="phone"
+                placeholder="+48 ___ ___ ___"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <textarea
+                name="request"
+                placeholder="Опишіть ідею (необов'язково)"
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary btn-submit">
+              Обговорити замовлення
+            </button>
+          </form>
+
+          <div class="contact-alternatives">
+            <p class="alt-title">Або напишіть нам напряму:</p>
+            <div class="messenger-grid">
+              <a
+                href="https://ig.me/m/your_profile"
+                class="ms-btn insta"
+                target="_blank"
+                >Instagram Direct</a
+              >
+              <a
+                href="https://m.me/your_page"
+                class="ms-btn mssngr"
+                target="_blank"
+                >Facebook Messenger</a
+              >
+              <a
+                href="https://wa.me/your_number"
+                class="ms-btn wa"
+                target="_blank"
+                >WhatsApp</a
+              >
+              <a
+                href="https://t.me/your_username"
+                class="ms-btn tg"
+                target="_blank"
+                >Telegram</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="review">
       <h2>О нас</h2>
       <div class="social-grid">

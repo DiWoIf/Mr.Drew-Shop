@@ -37,6 +37,12 @@ a {
   text-decoration: none;
 }
 
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 /* Контейнеры и отступы */
 .section {
   padding: 40px 20px;
@@ -370,14 +376,120 @@ a {
   gap: 20px;
 }
 
-.category-card,
-.product-card {
+.category-card {
   text-align: center;
+
+  transition:
+    transform 250ms ease,
+    box-shadow 250ms ease;
 }
-.img-placeholder img,
-.product-card img {
+.img-placeholder img {
   width: 100%;
   height: auto;
+  border-radius: 10px; /* Скругление самого фото */
+}
+
+.category-card:hover img {
+  transform: translateY(-5px); /* Легкий подъем при наведении */
+  box-shadow: 0px 10px 20px rgba(46, 47, 66, 0.15);
+}
+
+/* форма */
+
+/* Контейнер сетки */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  margin-top: 32px;
+}
+
+/* Стили полей (в стиле твоих карточек) */
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 16px;
+  border: 1px solid #e7e9fc;
+  border-radius: 12px; /* как у карточек */
+  background-color: #fcfcfc;
+  font-family: inherit;
+  transition: border-color 250ms ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #4d5ae5;
+  background-color: #fff;
+}
+
+/* Кнопки мессенджеров */
+.messenger-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ms-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 250ms ease;
+  border: 1px solid #e7e9fc;
+  color: #2e2f42;
+}
+
+.ms-btn:hover {
+  opacity: 0.8;
+}
+
+.ms-btn {
+  background: #ffffff;
+  border: 1px solid #e7e9fc; /* Нейтральный цвет как у карточек */
+  color: #2e2f42;
+  transition: all 250ms ease;
+}
+
+/* При наведении кнопка мягко окрашивается в цвет бренда */
+.ms-btn.insta:hover {
+  border-color: #dc2743;
+  color: #dc2743;
+  background: #fff5f6;
+}
+.ms-btn.mssngr:hover {
+  border-color: #006aff;
+  color: #006aff;
+  background: #f0f5ff;
+}
+.ms-btn.wa:hover {
+  border-color: #25d366;
+  color: #25d366;
+  background: #f0fff5;
+}
+.ms-btn.tg:hover {
+  border-color: #2aabee;
+  color: #2aabee;
+  background: #f0faff;
+}
+/* ==========================================================================
+   2. МОБИЛКА (Breakpoint: 320px)
+   ========================================================================== */
+@media (max-width: 767px) {
+  .grid-four {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 20px;
+  }
+  .category-card {
+    flex: 0 0 80%;
+    scroll-snap-align: center;
+  }
 }
 
 /* ==========================================================================
@@ -416,6 +528,13 @@ a {
     display: none;
   }
 
+  @media (min-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+    }
+  }
+
   /* Hero */
   .hero {
     height: 70vh;
@@ -445,6 +564,7 @@ a {
 
   /* Сетка 2х2 */
   .grid-four {
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
 

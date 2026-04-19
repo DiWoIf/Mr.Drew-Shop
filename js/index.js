@@ -145,3 +145,9 @@ closeBtns.forEach((btn) => {
     successModal.classList.add("is-hidden");
   });
 });
+
+successModal.addEventListener("click", (e) => {
+  if (e.target === successModal) {
+    successModal.classList.add("is-hidden");
+  }
+});

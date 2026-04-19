@@ -90,3 +90,18 @@ if (savedLang) {
     }
   }
 })();
+
+document.querySelectorAll(".faq-card").forEach((targetDetail) => {
+  targetDetail.addEventListener("click", (e) => {
+    // Ждем микросекунду, чтобы атрибут open успел обновиться
+    setTimeout(() => {
+      if (targetDetail.open) {
+        document.querySelectorAll(".faq-card").forEach((detail) => {
+          if (detail !== targetDetail) {
+            detail.open = false;
+          }
+        });
+      }
+    }, 10);
+  });
+});

@@ -199,7 +199,9 @@
             class="order-form"
           >
             <input type="hidden" name="form-name" value="consultation-form" />
-
+            <div class="visually-hidden">
+              <label>Don't fill this out: <input name="bot-field" /></label>
+            </div>
             <div class="form-group">
               <input
                 type="text"
@@ -213,8 +215,11 @@
               <input
                 type="tel"
                 name="phone"
+                id="form-phone-input"
+                inputmode="tel"
                 placeholder="+48 ___ ___ ___"
                 required
+                minlength="9"
               />
             </div>
 
@@ -403,6 +408,18 @@
         </div>
       </div>
     </footer>
+
+    <div id="success-modal" class="modal-overlay is-hidden">
+      <div class="modal-content">
+        <button type="button" class="modal-close" id="modal-close-btn">
+          &times;
+        </button>
+        <div class="success-icon">✅</div>
+        <h2>Дякуємо!</h2>
+        <p>Ваша заявка прийнята. Ми зв'яжемося з вами найближчим часом.</p>
+        <button type="button" class="btn-primary" id="modal-ok-btn">ОК</button>
+      </div>
+    </div>
     <script src="./js/index.js"></script>
   </body>
 </html>

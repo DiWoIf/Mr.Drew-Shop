@@ -105,3 +105,43 @@ document.querySelectorAll(".faq-card").forEach((targetDetail) => {
     }, 10);
   });
 });
+
+// фильтр ввода телефона
+
+const phoneInput = document.getElementById("form-phone-input");
+
+phoneInput.addEventListener("input", (e) => {
+  // Оставляем только цифры и плюс
+  e.target.value = e.target.value.replace(/[^\d+]/g, "");
+});
+
+// МОДАЛКА
+const orderForm = document.querySelector('form[name="consultation-form"]');
+const successModal = document.getElementById("success-modal");
+const closeBtns = document.querySelectorAll("#modal-close-btn, #modal-ok-btn");
+
+// Обработка отправки
+orderForm.addEventListener("submit", (e) => {
+  e.preventDefault(); // Останавливаем перезагрузку страницы
+
+  const formData = new FormData(orderForm);
+
+  fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams(formData).toString(),
+  })
+    .then(() => {
+      // Показываем модалку
+      successModal.classList.remove("is-hidden");
+      orderForm.reset(); // Очищаем форму
+    })
+    .catch((error) => alert("Ошибка отправки: " + error));
+});
+
+// Закрытие модалки
+closeBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    successModal.classList.add("is-hidden");
+  });
+});

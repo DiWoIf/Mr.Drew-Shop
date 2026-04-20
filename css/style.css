@@ -110,7 +110,7 @@ img {
   /* Добавим легкую тень, чтобы отделять хедер от контента при скролле */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 
-  background-color: #ffffff;
+  background-color: #020300;
   box-shadow:
     0px 2px 4px rgba(46, 47, 66, 0.08),
     0px 1px 2px rgba(46, 47, 66, 0.16);
@@ -125,7 +125,22 @@ img {
 }
 
 .logo a {
-  color: #05082b;
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  /* Базовый размер для десктопа */
+  width: 150px;
+  height: auto; /* Чтобы не искажались пропорции */
+  display: block;
+}
+
+/* Адаптив для мобилок (как на твоем скриншоте) */
+@media (max-width: 480px) {
+  .logo-img {
+    width: 120px; /* Уменьшаем еще немного для узких экранов */
+  }
 }
 
 .nav-desktop {
@@ -133,11 +148,18 @@ img {
 }
 /* Скрываем меню на мобильных (обычно гамбургер) */
 
+.header-actions {
+  display: flex;
+  align-items: center; /* Чтобы UA и полоски бургера были на одной линии */
+  gap: 12px; /* Регулируй этот параметр, чтобы найти идеальное расстояние */
+}
+
 .lang-switcher {
-  position: relative; /* Чтобы список позиционировался относительно этой обертки */
+  position: relative;
 }
 
 .lang-current {
+  color: #f5f5f5; /* Твой мягкий белый */
   background: none;
   border: none;
   font-weight: 700;
@@ -146,70 +168,105 @@ img {
   display: flex;
   align-items: center;
   gap: 4px;
+  transition: color 0.2s ease;
 }
 
-/* Маленькая стрелочка вниз (опционально) */
+.lang-current:hover {
+  color: #ffffff; /* Подсветка при наведении */
+}
+
+/* Маленькая стрелочка вниз */
 .lang-current::after {
   content: "▼";
   font-size: 8px;
+  margin-top: 1px;
 }
 
 .lang-list {
-  display: none; /* Прячем список */
+  display: none;
   position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #fff;
-  border: 1px solid rgba(77, 90, 229, 0.1);
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
+
+  /* ИСПРАВЛЕНИЕ: Центрирование и отступ сверху */
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+
+  /* ИСПРАВЛЕНИЕ: Темная тема */
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+  border-radius: 6px; /* Чуть мягче углы */
+
   list-style: none;
   padding: 5px 0;
-  z-index: 10;
+  z-index: 100;
+  min-width: 70px; /* Чтобы список не был слишком узким */
 }
 
-/* Когда добавим этот класс через JS — список покажется */
+/* Показ списка */
 .lang-switcher.is-open .lang-list {
   display: block;
 }
 
-.lang-list button {
-  width: 100%;
-  padding: 8px 15px;
-  border: none;
-  background: none;
-  cursor: pointer;
-  text-align: left;
+.lang-list {
+  display: none;
+  position: absolute;
+  top: calc(100% + 12px); /* Чуть больше отступ от кнопки */
+  left: 50%;
+  transform: translateX(-50%);
+
+  /* Делаем фон чуть светлее и добавляем эффект стекла (по желанию) */
+  background-color: #1e1e1e;
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Тонкая светлая граница */
+  border-radius: 12px; /* Мягкие современные углы */
+  padding: 6px;
+  min-width: 52px;
+
+  /* Глубокая, мягкая тень */
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6);
+  z-index: 100;
 }
 
-.lang-list button:hover {
-  background-color: #f4f4fd;
-}
-
-/* .lang-switcher {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.lang-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
+/* Элементы списка */
+.lang-list li a {
+  display: block;
+  padding: 10px 14px;
+  color: #a0a0a0; /* В обычном состоянии текст серый */
+  text-decoration: none;
+  font-size: 13px;
   font-weight: 500;
-  color: #2e2f42;
-  padding: 4px 8px;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+  border-radius: 8px; /* Скругляем саму область наведения */
+  transition: all 0.2s ease;
 }
 
-.lang-btn.active {
-  color: #4d5ae5;
-  border-bottom: 2px solid #4d5ae5;
+/* Эффект при наведении */
+.lang-list li a:hover {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.05
+  ); /* Легкий блик вместо черного фона */
+  color: #ffffff; /* Текст становится белым */
 }
 
-.lang-btn:hover:not(.active) {
-  color: #404bbf;
-} */
+/* Анимация появления */
+.lang-switcher.is-open .lang-list {
+  display: block;
+  animation: dropDown 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+}
+
+@keyframes dropDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
 
 .burger-btn {
   padding: 0;
@@ -219,7 +276,7 @@ img {
 
 .burger-icon {
   display: block;
-  fill: #2f2f37;
+  fill: #f5f5f5;
 }
 
 .mobile-menu {
@@ -228,7 +285,8 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #fff;
+  background: rgba(0, 0, 0, 0.8); /* Черный на 80% */
+  backdrop-filter: blur(10px); /* Размытие того, что под меню */
 
   opacity: 0;
   visibility: hidden;
@@ -257,7 +315,7 @@ img {
 
 .mobile-menu-close {
   position: absolute;
-  top: 12px;
+  top: 16px;
   right: 16px;
   border-radius: 50%;
 
@@ -265,11 +323,16 @@ img {
   align-items: center;
   justify-content: center;
   padding: 0;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid #f5f5f5;
   border-radius: 50%;
   width: 24px;
   height: 24px;
   background-color: transparent;
+}
+
+.mobile-menu-close-icon {
+  fill: #f5f5f5;
+  transition: fill 0.2s ease;
 }
 
 .mobile-menu-nav {
@@ -284,10 +347,10 @@ img {
 
 .nav-list-mobile a {
   font-weight: 700;
-  font-size: 32px;
+  font-size: 24px;
   line-height: 1.11;
   letter-spacing: 0.02em;
-  color: #2e2f42;
+  color: #f5f5f5;
 }
 
 .nav-list-mobile a:active,
@@ -307,7 +370,7 @@ img {
   font-size: 20px;
   line-height: 1.2;
   letter-spacing: 0.02em;
-  color: #434455;
+  color: #f5f5f5;
 }
 
 .contacts-link-mobile:active {
@@ -317,8 +380,32 @@ img {
 .header-link-list {
   display: flex;
   justify-content: center;
-  gap: 32px;
+  gap: 16px;
   align-items: center;
+}
+
+.social-link {
+  display: flex; /* Теперь width и height заработают! */
+  align-items: center; /* Центрируем иконку внутри по вертикали */
+  justify-content: center; /* Центрируем иконку внутри по горизонтали */
+  width: 44px;
+  height: 44px;
+  transition: transform 0.2s;
+}
+
+.social-link-icon {
+  /* Эти значения перекроют те, что в HTML */
+  width: 28px;
+  height: 28px;
+
+  /* Добавь это, чтобы SVG не искажался */
+  display: block;
+  fill: #f5f5f5;
+  opacity: 0.7; /* Делаем чуть приглушенными */
+  transition: opacity 0.2s;
+}
+.social-link-icon:hover {
+  opacity: 1; /* Оживают при наведении */
 }
 
 /* Hero (Mobile) */

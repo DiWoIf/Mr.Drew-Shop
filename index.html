@@ -50,10 +50,13 @@
           <nav class="nav">
             <ul class="nav-list-mobile">
               <li>
-                <a href="#categories">Обзор</a>
+                <a href="#categories">Realizacje</a>
               </li>
-              <li><a href="#review">О нас</a></li>
-              <li><a href="#contacts">Контакты</a></li>
+              <li><a href="#process">Jak to działa</a></li>
+              <li><a href="#order-form">Kontakt / Forma</a></li>
+              <li>
+                <a href="#faq">FAQ</a>
+              </li>
             </ul>
           </nav>
           <address class="contacts-mobile">
@@ -137,7 +140,7 @@
       </div>
     </section>
 
-    <section class="features">
+    <section class="features section">
       <div class="feature-item">
         <div>
           <h3 class="feature-title">JAKOŚĆ</h3>
@@ -198,13 +201,54 @@
       </div>
     </section>
 
+    <section class="process section" id="process">
+      <div class="container">
+        <h2 class="section-title">Jak to działa?</h2>
+
+        <div class="process-grid">
+          <div class="process-item">
+            <div class="process-number">01</div>
+            <h3 class="process-step-title">Wybierz produkt</h3>
+            <p class="process-text">
+              Wybierz bazę: koszulkę, bluzę lub torbę bawełnianą z naszej
+              oferty.
+            </p>
+          </div>
+
+          <div class="process-item">
+            <div class="process-number">02</div>
+            <h3 class="process-step-title">Podaj swój pomysł</h3>
+            <p class="process-text">
+              Prześlij nam gotową grafikę lub po prostu opisz swoją wizję.
+            </p>
+          </div>
+
+          <div class="process-item">
+            <div class="process-number">03</div>
+            <h3 class="process-step-title">Akceptacja projektu</h3>
+            <p class="process-text">
+              Przygotujemy wizualizację. Po Twoim "ok" ruszamy z drukiem.
+            </p>
+          </div>
+
+          <div class="process-item">
+            <div class="process-number">04</div>
+            <h3 class="process-step-title">Odbierz paczkę</h3>
+            <p class="process-text">
+              Gotowy produkt wyślemy do Ciebie w ciągu 1-3 dni roboczych.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section contact" id="order-form">
       <div class="container">
         <div class="contact-header">
-          <h2 class="section-title">Твій ідеальний принт тут</h2>
-          <p class="section-subtitle">
-            Допоможемо обрати з нашої колекції або надрукуємо твоє власне
-            зображення
+          <h2 class="section-title">Twój idealny nadruk jest tutaj</h2>
+          <p class="alt-title">
+            Pomożemy Ci wybrać coś z naszej kolekcji lub nadrukujemy Twój własny
+            projekt.
           </p>
         </div>
 
@@ -224,7 +268,7 @@
               <input
                 type="text"
                 name="name"
-                placeholder="Як до вас звертатися?"
+                placeholder="Jak się do Ciebie zwracać?"
                 required
               />
             </div>
@@ -244,17 +288,17 @@
             <div class="form-group">
               <textarea
                 name="request"
-                placeholder="Опишіть ідею (необов'язково)"
+                placeholder="Opisz swój pomysł (opcjonalnie)"
               ></textarea>
             </div>
 
             <button type="submit" class="btn-primary btn-submit">
-              Обговорити замовлення
+              Omówienie zamówienia
             </button>
           </form>
 
           <div class="contact-alternatives">
-            <p class="alt-title">Або напишіть нам напряму:</p>
+            <p class="alt-title">Lub napisz do nas bezpośrednio:</p>
             <div class="messenger-grid">
               <a
                 href="https://ig.me/m/mr.drew_store"
@@ -288,18 +332,20 @@
 
     <section class="section faq" id="faq">
       <div class="container">
-        <h2 class="section-title">Часті запитання</h2>
+        <h2 class="section-title">FAQ</h2>
 
         <div class="faq-list">
           <details class="faq-card" name="faq">
-            <summary class="faq-question">Як замовити підбір принта?</summary>
+            <summary class="faq-question">
+              Czy można zrobić własny design?
+            </summary>
             <div class="faq-answer-wrapper">
               <div class="faq-answer-inner">
                 <div class="faq-answer">
                   <p>
-                    Опишіть вашу ідею у формі або напишіть нам у месенджери. Ми
-                    підберемо варіанти з нашої закритої галереї або допоможемо
-                    адаптувати ваше фото.
+                    Tak, to nasza specjalność. Prześlij nam swój projekt, a my
+                    dobierzemy najlepszą metodę druku (DTF lub sitodruk), aby
+                    Twoja wizja stała się rzeczywistością.
                   </p>
                 </div>
               </div>
@@ -308,15 +354,84 @@
 
           <details class="faq-card" name="faq">
             <summary class="faq-question">
-              Чи можна надрукувати моє власне фото?
+              A jeśli mam tylko pomysł, bez gotowej grafiki?
             </summary>
             <div class="faq-answer-wrapper">
               <div class="faq-answer-inner">
                 <div class="faq-answer">
                   <p>
-                    Так, ми приймаємо індивідуальні замовлення. Найкраще
-                    підходять фото з високою роздільною здатністю. Наш дизайнер
-                    безкоштовно перевірить якість перед друком.
+                    Żaden problem. Opisz nam to słowami, a my pomożemy to
+                    sformalizować i przygotować do druku.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details class="faq-card" name="faq">
+            <summary class="faq-question">Ile trzeba czekać?</summary>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer-inner">
+                <div class="faq-answer">
+                  <p>
+                    Zazwyczaj 1–3 dni na wykonanie. Do tego dochodzi czas
+                    dostawy kurierem — zależy od miasta, ale działamy
+                    ekspresowo.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details class="faq-card" name="faq">
+            <summary class="faq-question">Czy wysyłacie do Europy?</summary>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer-inner">
+                <div class="faq-answer">
+                  <p>
+                    Tak. Ślemy paczki do całej Europy bez zbędnych ceregieli.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details class="faq-card" name="faq">
+            <summary class="faq-question">
+              Czy można zamówić tylko jedną sztukę?
+            </summary>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer-inner">
+                <div class="faq-answer">
+                  <p>Oczywiście. Jedną, dziesięć czy sto — jak Ci wygodnie.</p>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details class="faq-card" name="faq">
+            <summary class="faq-question">Czy nadruk się nie spierze?</summary>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer-inner">
+                <div class="faq-answer">
+                  <p>
+                    Nie. Robimy to tak, żebyś nosił to latami, a nie na raz.
+                    Stosujemy trwałe techniki druku (DTF), które wytrzymują
+                    mnóstwo prań.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details class="faq-card" name="faq">
+            <summary class="faq-question">Jak zamówić?</summary>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer-inner">
+                <div class="faq-answer">
+                  <p>
+                    Napisz do nas bezpośrednio lub złóż zamówienie przez stronę.
+                    Dalej poprowadzimy Cię za rękę.
                   </p>
                 </div>
               </div>
@@ -332,17 +447,21 @@
           <div class="footer-brand">
             <a href="/" class="footer-logo">Mr.Drew Shop</a>
             <p class="footer-description">
-              Твій ідеальний принт починається тут.
+              Twój idealny print zaczyna się tutaj
             </p>
           </div>
 
           <div class="footer-nav">
             <h4 class="footer-title">Навігація</h4>
             <ul class="footer-links">
-              <li><a href="#categories">Категорії</a></li>
-              <li><a href="#faq">Доставка та оплата</a></li>
-              <li><a href="#about">Про нас</a></li>
-              <li><a href="#order-form">Контакти</a></li>
+              <li>
+                <a href="#categories">Realizacje</a>
+              </li>
+              <li><a href="#process">Jak to działa</a></li>
+              <li><a href="#order-form">Kontakt / Forma</a></li>
+              <li>
+                <a href="#faq">FAQ</a>
+              </li>
             </ul>
           </div>
 
@@ -353,7 +472,7 @@
                 <a
                   class="social-link"
                   href="https://www.tiktok.com/@mr.drew_store"
-                  ><svg class="social-link-icon" width="24" height="24">
+                  ><svg class="footer-icon" width="24" height="24">
                     <use href="./img/icons.svg#icon-tiktok"></use>
                   </svg>
                 </a>
@@ -362,7 +481,7 @@
                 <a
                   class="social-link"
                   href="https://www.facebook.com/people/Mr-Drew/61578522144234/"
-                  ><svg class="social-link-icon" width="24" height="24">
+                  ><svg class="footer-icon" width="24" height="24">
                     <use href="./img/icons.svg#icon-facebook"></use>
                   </svg>
                 </a>
@@ -371,21 +490,21 @@
                 <a
                   class="social-link"
                   href="https://www.instagram.com/mr.drew_store"
-                  ><svg class="social-link-icon" width="24" height="24">
+                  ><svg class="footer-icon" width="24" height="24">
                     <use href="./img/icons.svg#icon-instagram"></use>
                   </svg>
                 </a>
               </li>
               <li class="social-list">
                 <a class="social-link" href="https://t.me/mr.drew_store/"
-                  ><svg class="social-link-icon" width="24" height="24">
+                  ><svg class="footer-icon" width="24" height="24">
                     <use href="./img/icons.svg#icon-send"></use>
                   </svg>
                 </a>
               </li>
               <li class="social-list">
                 <a class="social-link" href="https://wa.me/48575214889"
-                  ><svg class="social-link-icon" width="24" height="24">
+                  ><svg class="footer-icon" width="24" height="24">
                     <use href="./img/icons.svg#icon-whatsapp"></use>
                   </svg>
                 </a>
@@ -421,5 +540,61 @@
       </div>
     </div>
     <script src="./js/index.js"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Czy można zrobić własny design?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tak, to nasza specjalność. Prześlij nam swój projekt, а my dobierzemy najlepszą metodę druku (DTF lub sitodruk), aby Twoja wizja stała się rzeczywistością."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "A jeśli mam tylko pomysł, bez gotowej grafiki?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Żaden problem. Opisz nam to słowami, a my pomożemy to sformalizować i przygotować profesjonalny projekt do druku."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Ile trzeba czekać?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Realizacja trwa zazwyczaj 1–3 dni robocze. Do tego należy doliczyć czas dostawy kurierem, który na terenie Polski zajmuje zwykle 1-2 dni."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Czy wysyłacie do Europy?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tak, wysyłamy nasze produkty do większości krajów Europy. Szybko i bez zbędnych formalności."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Czy można zamówić tylko jedną sztukę?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Oczywiście. Realizujemy zamówienia już od jednej sztuki, ale chętnie podejmujemy się też większych nakładów hurtowych."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Czy nadruk się nie spierze?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nie. Stosujemy trwałe techniki druku, takie jak DTF, które przy praniu w 30-40 stopniach zachowują idealny wygląd przez lata."
+            }
+          }
+        ]
+      }
+    </script>
   </body>
 </html>

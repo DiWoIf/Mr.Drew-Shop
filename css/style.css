@@ -2,18 +2,16 @@
    1. БАЗОВЫЕ НАСТРОЙКИ (MOBILE FIRST)
    ========================================================================== */
 :root {
-  --primary-blue: #0055ff;
   --dark: #1a1a1a;
   --light-bg: #f5f5f5;
   --white: #ffffff;
   --gray: #666;
-  --section-padding: 40px; /* Отступ сверху и снизу для мобилок */
   --section-padding-desktop: 120px; /* Отступ для десктопа */
   --border-color: rgba(2, 3, 0, 0.07); /* Твой тонкий бордер */
 }
 
 html {
-  scroll-behavior: smooth !important;
+  scroll-behavior: smooth;
 }
 
 * {
@@ -64,8 +62,6 @@ img {
 .section {
   padding: 40px 20px;
   background: var(--light-bg);
-  padding-top: var(--section-padding);
-  padding-bottom: var(--section-padding);
   width: 100%;
   box-sizing: border-box;
 }
@@ -76,6 +72,16 @@ img {
   text-align: center;
 }
 
+@media (min-width: 768px) {
+  .section {
+    padding: 60px 40px;
+  }
+  .section h2 {
+    text-align: left;
+    font-size: 1.8rem;
+  }
+}
+
 @media (min-width: 1024px) {
   section {
     padding-top: var(--section-padding-desktop);
@@ -83,25 +89,11 @@ img {
   }
 }
 
-/* Кнопки */
-/* .btn-primary,
-.btn-secondary {
-  display: inline-block;
-  background: var(--primary-blue);
-  color: var(--white);
-  text-align: center;
-  text-decoration: none;
-  border-radius: 4px;
-  font-weight: 600;
-  transition: 0.3s;
-  border: none;
-  cursor: pointer;
-} */
-
 .btn-primary {
   padding: 12px 24px;
   width: 100%;
 }
+
 .btn-secondary {
   padding: 10px 0;
   width: 100%;
@@ -114,30 +106,17 @@ img {
   justify-content: space-between;
   align-items: center;
   padding: 12px 16px;
-  background: var(--white);
 
   /* Свойства для фиксации */
   position: sticky;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000; /* Чтобы хедер всегда был поверх контента */
-
-  /* Добавим легкую тень, чтобы отделять хедер от контента при скролле */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-
+  z-index: 1000;
   background-color: #020300;
   box-shadow:
     0px 2px 4px rgba(46, 47, 66, 0.08),
     0px 1px 2px rgba(46, 47, 66, 0.16);
-}
-
-.logo {
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 1.17;
-  letter-spacing: 0.03em;
-  color: #05082b;
 }
 
 .logo a {
@@ -147,16 +126,9 @@ img {
 
 .logo-img {
   /* Базовый размер для десктопа */
-  width: 150px;
+  width: 120px;
   height: auto; /* Чтобы не искажались пропорции */
   display: block;
-}
-
-/* Адаптив для мобилок (как на твоем скриншоте) */
-@media (max-width: 480px) {
-  .logo-img {
-    width: 120px; /* Уменьшаем еще немного для узких экранов */
-  }
 }
 
 .nav-desktop {
@@ -166,8 +138,7 @@ img {
 
 .header-actions {
   display: flex;
-  align-items: center; /* Чтобы UA и полоски бургера были на одной линии */
-  gap: 12px; /* Регулируй этот параметр, чтобы найти идеальное расстояние */
+  gap: 12px;
 }
 
 .lang-switcher {
@@ -175,7 +146,7 @@ img {
 }
 
 .lang-current {
-  color: #f5f5f5; /* Твой мягкий белый */
+  color: var(--light-bg);
   background: none;
   border: none;
   font-weight: 700;
@@ -185,10 +156,6 @@ img {
   align-items: center;
   gap: 4px;
   transition: color 0.2s ease;
-}
-
-.lang-current:hover {
-  color: #ffffff; /* Подсветка при наведении */
 }
 
 /* Маленькая стрелочка вниз */
@@ -267,7 +234,7 @@ img {
 
 .burger-icon {
   display: block;
-  fill: #f5f5f5;
+  fill: var(--light-bg);
 }
 
 .mobile-menu {
@@ -297,7 +264,6 @@ img {
 .mobile-menu-container {
   position: relative;
   padding: 72px 28px 40px;
-  padding-bottom: 40px;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -308,7 +274,6 @@ img {
   position: absolute;
   top: 16px;
   right: 16px;
-  border-radius: 50%;
 
   display: flex;
   align-items: center;
@@ -322,7 +287,7 @@ img {
 }
 
 .mobile-menu-close-icon {
-  fill: #f5f5f5;
+  fill: var(--light-bg);
   transition: fill 0.2s ease;
 }
 
@@ -341,7 +306,7 @@ img {
   font-size: 24px;
   line-height: 1.11;
   letter-spacing: 0.02em;
-  color: #f5f5f5;
+  color: var(--light-bg);
 }
 
 .nav-list-mobile a:active,
@@ -361,7 +326,7 @@ img {
   font-size: 20px;
   line-height: 1.2;
   letter-spacing: 0.02em;
-  color: #f5f5f5;
+  color: var(--light-bg);
 }
 
 .contacts-link-mobile:active {
@@ -376,27 +341,53 @@ img {
 }
 
 .social-link {
-  display: flex; /* Теперь width и height заработают! */
-  align-items: center; /* Центрируем иконку внутри по вертикали */
-  justify-content: center; /* Центрируем иконку внутри по горизонтали */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 44px;
   height: 44px;
   transition: transform 0.2s;
 }
 
 .social-link-icon {
-  /* Эти значения перекроют те, что в HTML */
   width: 28px;
   height: 28px;
-
-  /* Добавь это, чтобы SVG не искажался */
   display: block;
-  fill: #f5f5f5;
-  opacity: 0.7; /* Делаем чуть приглушенными */
+  fill: var(--light-bg);
+  opacity: 0.7;
   transition: opacity 0.2s;
 }
 .social-link-icon:hover {
-  opacity: 1; /* Оживают при наведении */
+  opacity: 1;
+}
+
+@media (min-width: 768px) {
+  /* Показываем навигацию */
+  .nav-desktop {
+    display: block;
+  }
+  .nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: var(--dark);
+  }
+
+  .nav-desktop ul {
+    display: flex;
+    gap: 20px;
+  }
+
+  .burger-btn,
+  .mobile-menu {
+    display: none; /* Прячем всё мобильное */
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Навигация шире */
+  .nav a {
+    margin: 0 20px;
+  }
 }
 
 /* Hero (Mobile) */
@@ -412,7 +403,6 @@ img {
   padding: 20px;
   position: relative;
   overflow: hidden;
-  color: var(--white);
 }
 
 .hero::before {
@@ -433,6 +423,7 @@ img {
   position: relative;
   z-index: 1; /* Обязательно, чтобы текст был выше высветляющего слоя */
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  color: var(--light-bg);
 }
 
 .hero-overline {
@@ -457,17 +448,26 @@ img {
   margin-top: 15px;
 }
 
+@media (min-width: 1024px) {
+  /* Hero */
+  .hero {
+    height: 85vh;
+    padding: 0 5%;
+  }
+  .hero-content h1 {
+    font-size: 3.5rem;
+    max-width: 700px;
+  }
+}
+
 /* Features (Mobile - вертикально) */
 .features {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  padding: 30px 20px;
 }
 .feature-item {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   text-align: center;
 }
 
@@ -480,23 +480,40 @@ img {
   letter-spacing: 0.05em;
 }
 
+@media (min-width: 768px) {
+  /* Features - в ряд */
+  .features {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .feature-item {
+    flex-direction: row;
+    text-align: left;
+  }
+}
+
 /* Grids (Mobile - в одну колонку) */
 .categories {
   background-color: #f0f0f0;
 }
 .grid-four {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
   gap: 20px;
+  padding: 8px;
 }
 
 .category-card {
+  flex: 0 0 80%;
+  scroll-snap-align: center;
   text-align: center;
 
   transition:
     transform 250ms ease,
     box-shadow 250ms ease;
 }
+
 .img-placeholder img {
   width: 100%;
   height: auto;
@@ -508,13 +525,26 @@ img {
   box-shadow: 0px 10px 20px rgba(46, 47, 66, 0.15);
 }
 
+@media (min-width: 768px) {
+  .grid-four {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Сетка в 4 колонки */
+  .grid-four {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 /* процесс работы  */
 
 .process-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
-  margin-top: 40px;
 }
 
 .process-item {
@@ -564,8 +594,7 @@ img {
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 40px;
-  margin-top: 32px;
+  gap: 32px;
 }
 
 /* Стили полей (в стиле твоих карточек) */
@@ -600,7 +629,6 @@ img {
   letter-spacing: 0.05em;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: 10px;
 }
 
 /* Эффект при наведении */
@@ -634,22 +662,14 @@ img {
   justify-content: center;
   padding: 12px;
   border-radius: 12px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: opacity 250ms ease;
-  border: 1px solid #e7e9fc;
   color: #2e2f42;
+  background: #ffffff;
+  border: 1px solid #e7e9fc; /* Нейтральный цвет как у карточек */
+  transition: all 250ms ease;
 }
 
 .ms-btn:hover {
   opacity: 0.8;
-}
-
-.ms-btn {
-  background: #ffffff;
-  border: 1px solid #e7e9fc; /* Нейтральный цвет как у карточек */
-  color: #2e2f42;
-  transition: all 250ms ease;
 }
 
 /* При наведении кнопка мягко окрашивается в цвет бренда */
@@ -674,14 +694,24 @@ img {
   background: #f0faff;
 }
 
+@media (min-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  .btn-primary {
+    width: auto;
+  }
+}
+
 /* faq */
 
 .faq-list {
-  flex-direction: column;
   gap: 16px;
   display: grid;
-  grid-template-columns: 1fr; /* На мобилке всегда одна колонка */
-  max-width: 1200px; /* Увеличиваем общую ширину контейнера */
+  grid-template-columns: 1fr;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -714,7 +744,7 @@ img {
 .faq-question::after {
   content: "+";
   font-size: 24px;
-  color: #4d5ae5;
+  color: var(--dark);
   transition: transform 300ms ease;
 }
 
@@ -740,7 +770,7 @@ img {
 /* Стили самого текста */
 .faq-answer {
   padding: 0 20px 20px 20px;
-  color: #434455;
+  color: var(--dark);
   line-height: 1.5;
   opacity: 0;
   transform: translateY(-10px);
@@ -754,7 +784,6 @@ img {
   transform: translateY(0);
 }
 
-/* Десктопная версия (от 768px или 1158px) */
 @media screen and (min-width: 768px) {
   .faq-list {
     grid-template-columns: repeat(2, 1fr); /* Две колонки одинаковой ширины */
@@ -770,30 +799,22 @@ img {
 
 .footer {
   background-color: #f0f0f0;
-  padding: 60px 20px 30px;
+  padding: 40px 20px;
   border-top: 1px solid #e7e9fc;
-  color: #020300;
+  color: var(--dark);
 }
 
 .footer-grid {
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr;
-  gap: 40px;
-  margin-bottom: 48px;
-}
-
-@media (max-width: 768px) {
-  .footer-grid {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
+  gap: 28px;
+  margin-bottom: 20px;
 }
 
 .footer-logo {
   font-size: 24px;
   font-weight: 700;
-  text-decoration: none;
-  color: #2e2f42;
+  color: var(--dark);
   display: block;
   margin-bottom: 10px;
 }
@@ -802,25 +823,11 @@ img {
   font-size: 14px;
   line-height: 1.5;
   color: #434455;
-  max-width: 260px;
-}
-
-@media (max-width: 768px) {
-  .footer-description {
-    margin: 0 auto;
-  }
-}
-
-.footer-title {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 20px;
 }
 
 .footer-links a {
   display: block;
   margin: 12px 0;
-  text-decoration: none;
   color: #020300;
   opacity: 0.7; /* Делаем ссылки чуть бледнее текста */
   transition: opacity 0.3s;
@@ -840,12 +847,6 @@ img {
   display: block;
   transition: opacity 0.2s;
   fill: #020300;
-}
-
-@media (max-width: 768px) {
-  .footer-social-icons {
-    justify-content: center;
-  }
 }
 
 .social-icon {
@@ -885,12 +886,6 @@ img {
   gap: 20px;
 }
 
-@media (max-width: 768px) {
-  .footer-bottom {
-    flex-direction: column-reverse;
-  }
-}
-
 .copyright {
   font-size: 12px;
   color: #8e8f99;
@@ -899,193 +894,144 @@ img {
 /* Логотипы оплаты/доставки */
 .trust-badges {
   display: flex;
-  gap: 20px;
-  filter: grayscale(1); /* Делаем всё серым */
-  opacity: 0.5;
-  transition: opacity 300ms ease;
-}
-
-.trust-badges:hover {
-  opacity: 1;
-  filter: grayscale(0); /* Проявляем цвета при наведении на блок */
+  flex-wrap: wrap; /* Чтобы на мобилках они переносились на вторую строку */
+  justify-content: center;
 }
 
 .badge {
+  background-color: #f0f0f0; /* Очень светлый серый */
+  color: #888; /* Приглушенный цвет текста */
   font-size: 10px;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: 4px 8px;
-  border: 1px solid #e7e9fc;
+  text-transform: uppercase; /* Делает текст заглавным */
+  padding: 4px 10px;
   border-radius: 4px;
-  color: #8e8f99;
+  letter-spacing: 0.5px;
+  white-space: nowrap; /* Чтобы "Visa / MC" не разрывалось */
 }
 
-/* модалка */
-
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.modal-overlay.is-hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.modal-content {
-  background: white;
-  padding: 40px;
-  border-radius: 12px;
-  position: relative;
-  max-width: 400px;
-  width: 90%;
-  text-align: center;
-}
-
-.modal-close {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-}
-
-.success-icon {
-  font-size: 50px;
-  margin-bottom: 20px;
-}
-
-/* ==========================================================================
-   2. МОБИЛКА (Breakpoint: 320px)
-   ========================================================================== */
-@media (max-width: 767px) {
-  .grid-four {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding: 20px;
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
   }
-  .category-card {
-    flex: 0 0 80%;
-    scroll-snap-align: center;
+  .footer-bottom {
+    flex-direction: column-reverse;
   }
-}
-
-/* ==========================================================================
-   2. ПЛАНШЕТ (Breakpoint: 768px)
-   ========================================================================== */
-@media (min-width: 768px) {
-  .section {
-    padding: 60px 40px;
-  }
-  .section h2 {
-    text-align: left;
-    font-size: 1.8rem;
-  }
-
-  /* Показываем навигацию */
-  .nav-desktop {
-    display: block;
-  }
-  .nav a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: var(--dark);
-  }
-
-  .nav-desktop ul {
-    display: flex;
-    gap: 20px;
-  }
-
-  .burger-btn,
-  .mobile-menu {
-    display: none; /* Прячем всё мобильное */
-  }
-
-  .burger-btn {
-    display: none;
-  }
-
-  @media (min-width: 768px) {
-    .contact-grid {
-      grid-template-columns: 1fr 1fr;
-      align-items: start;
-    }
-  }
-
-  .btn-primary {
-    width: auto;
-  }
-
-  /* Features - в ряд */
-  .features {
-    flex-direction: row;
-    justify-content: space-around;
-  }
-  .feature-item {
-    flex-direction: row;
-    text-align: left;
-  }
-
-  /* Сетка 2х2 */
-  .grid-four {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .constructor-banner {
-    padding: 60px 10%;
-  }
-}
-
-/* ==========================================================================
-   3. ДЕСКТОП (Breakpoint: 1158px)
-   ========================================================================== */
-@media (min-width: 1158px) {
-  .header,
-  .section,
-  .footer {
-    /* max-width: 1400px; */
+  .footer-description {
     margin: 0 auto;
   }
-
-  /* Навигация шире */
-  .nav a {
-    margin: 0 20px;
+  .footer-social-icons {
+    justify-content: center;
   }
+}
 
-  /* Hero */
-  .hero {
-    height: 85vh;
-    padding: 0 5%;
-  }
-  .hero-content h1 {
-    font-size: 3.5rem;
-    max-width: 700px;
-  }
-
-  /* Сетка в 4 колонки */
-  .grid-four {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
+@media (min-width: 1024px) {
   /* Footer */
   .footer-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+}
+
+/* модалка */
+/* 1. Фон модалки (затемнение) */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(46, 47, 66, 0.4); /* Полупрозрачный темный */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Класс для скрытия модалки */
+.modal-overlay.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+/* 2. Само окно */
+.modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 400px;
+  background-color: var(--white);
+  box-shadow:
+    0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding: 40px 24px;
+  text-align: center;
+  /* Плавное появление самого окна */
+  transform: scale(1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-overlay.is-hidden .modal-content {
+  transform: scale(0.7); /* Окно будет "схлопываться" при закрытии */
+}
+
+/* 3. Кнопка закрытия (крестик) */
+.modal-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  background-color: var(--light-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-close-btn:hover {
+  background-color: #e2e2e2;
+}
+
+/* 4. Текст внутри модалки */
+.modal-title {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: var(--dark);
+}
+
+.modal-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--gray);
+  margin-bottom: 24px;
+}
+
+/* 5. Кнопка "ОК" */
+.modal-ok-btn {
+  padding: 10px 24px;
+  background-color: var(--dark);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 250ms;
+}
+
+.modal-ok-btn:hover {
+  background-color: #333;
 }

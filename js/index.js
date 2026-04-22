@@ -1,22 +1,3 @@
-// 1. Сначала выносим данные (словарь) на самый верх
-const translations = {
-  ua: {
-    hero_title: "Место, где вы можете воплотить свои идеи",
-    menu_overview: "Обзор",
-    menu_contacts: "Контакты",
-  },
-  en: {
-    hero_title: "A place where you can bring your ideas to life",
-    menu_overview: "Overview",
-    menu_contacts: "Contacts",
-  },
-  pl: {
-    hero_title: "Miejsce, w którym ożywisz swoje pomysły",
-    menu_overview: "Przegląd",
-    menu_contacts: "Kontakty",
-  },
-};
-
 // 2. Находим элементы один раз
 const langSwitcher = document.querySelector(".lang-switcher");
 const langCurrent = document.querySelector(".lang-current");
@@ -55,12 +36,6 @@ document.addEventListener("click", (e) => {
     langSwitcher.classList.remove("is-open");
   }
 });
-
-// 5. Бонус: проверяем сохраненный язык при загрузке страницы
-const savedLang = localStorage.getItem("selectedLang");
-if (savedLang) {
-  changeLanguage(savedLang);
-}
 
 (() => {
   const refs = {

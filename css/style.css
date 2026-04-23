@@ -393,7 +393,9 @@ img {
 /* Hero (Mobile) */
 .hero {
   height: 70vh;
-  /* Градиент сверху, картинка под ним */
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("../img/hero-tablet.webp");
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
     -webkit-image-set(

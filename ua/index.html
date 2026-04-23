@@ -8,15 +8,44 @@
       name="description"
       content="Персоналізований одяг з вашим принтом за 48 годин. Найвища якість, щільна бавовна та стійкий друк. Створіть власний стиль з Mr. Drew. Носи своє!"
     />
-    <link rel="stylesheet" href="../css/style.css" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://твій-сайт.com/" />
+    <meta
+      property="og:title"
+      content="MR. DREW | Персоналізований друк на одязі"
+    />
+    <meta
+      property="og:description"
+      content="Якісний друк на футболках за 48 годин. Твої ідеї на найкращій бавовні. Носи своє!"
+    />
+    <meta property="og:image" content="../img/og-image.jpg" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="MR. DREW | Персоналізований друк" />
+    <meta
+      property="twitter:description"
+      content="Створи власний стиль. Найвища якість бавовни та стійкий друк."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="image"
+      href="../img/hero-tablet.webp"
+      imagesrcset="../img/hero-mobile.webp 375w, ../img/hero-tablet.webp 768w, ../img/hero.webp 1024w"
+      imagesizes="100vw"
+      fetchpriority="high"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="../css/style.css" />
 
     <link rel="alternate" hreflang="pl" href="https://tvoysite.com/" />
     <link rel="alternate" hreflang="uk" href="https://tvoysite.com/ua/" />
     <link rel="alternate" hreflang="en" href="https://tvoysite.com/en/" />
+    <link rel="icon" href="../img/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#000000" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -239,34 +268,82 @@
       <div class="grid-four">
         <div class="category-card">
           <div class="img-placeholder">
-            <img
-              src="../img/smile.jpg"
-              alt="Чоловіча футболка з авторським принтом преміум-якості"
-            />
+            <picture>
+              <source
+                srcset="../img/smile.webp 400w, ../img/smile@2x.webp 800w"
+                sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 25vw"
+                type="image/webp"
+              />
+
+              <img
+                src="../img/smile.webp"
+                alt="Чоловіча футболка з авторським принтом преміум-якості"
+                loading="lazy"
+                decoding="async"
+                width="400"
+                height="600"
+              />
+            </picture>
           </div>
         </div>
         <div class="category-card">
           <div class="img-placeholder">
-            <img
-              src="../img/glass.jpg"
-              alt="Стильний принт на чорній футболці — Студія Mr. Drew"
-            />
+            <picture>
+              <source
+                srcset="../img/glass.webp 400w, ../img/glass@2x.webp 800w"
+                sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 25vw"
+                type="image/webp"
+              />
+
+              <img
+                src="../img/glass.webp"
+                alt="Стильний принт на чорній футболці — Студія Mr. Drew"
+                loading="lazy"
+                decoding="async"
+                width="400"
+                height="600"
+              />
+            </picture>
           </div>
         </div>
         <div class="category-card">
           <div class="img-placeholder">
-            <img
-              src="../img/bag.jpg"
-              alt="Бавовняна екосумка з персоналізованим принтом"
-            />
+            <picture>
+              <source
+                srcset="../img/bag.webp 400w, ../img/bag@2x.webp 800w"
+                sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 25vw"
+                type="image/webp"
+              />
+
+              <img
+                src="../img/bag.webp"
+                alt="Бавовняна екосумка з персоналізованим принтом"
+                loading="lazy"
+                decoding="async"
+                width="400"
+                height="600"
+              />
+            </picture>
           </div>
         </div>
         <div class="category-card">
           <div class="img-placeholder">
-            <img
-              src="../img/anime.jpg"
-              alt="Футболка з принтом у стилі аніме"
-            />
+            <picture>
+              <source
+                srcset="../img/anime.webp 400w, ../img/anime@2x.webp 800w"
+                sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 25vw"
+                type="image/webp"
+              />
+
+              <img
+                src="../img/anime.webp"
+                alt="Футболка з принтом у стилі аніме"
+                loading="lazy"
+                decoding="async"
+                width="400"
+                height="600"
+              />
+            </picture>
           </div>
         </div>
       </div>

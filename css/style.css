@@ -393,9 +393,24 @@ img {
 /* Hero (Mobile) */
 .hero {
   height: 70vh;
-  background:
+  /* Градиент сверху, картинка под ним */
+  background-image:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("../img/hero.jpg") center/cover;
+    -webkit-image-set(
+        url("../img/hero-mobile.webp") 1x,
+        url("../img/hero-tablet.webp") 2x
+      );
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    image-set(
+      url("../img/hero-mobile.webp") 1x,
+      url("../img/hero-tablet.webp") 2x
+    );
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -448,11 +463,37 @@ img {
   margin-top: 15px;
 }
 
+@media (min-width: 768px) {
+  .hero {
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+      -webkit-image-set(
+          url("../img/hero-tablet.webp") 1x,
+          url("../img/hero@2x.webp") 2x
+        );
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+      image-set(
+        url("../img/hero-tablet.webp") 1x,
+        url("../img/hero@2x.webp") 2x
+      );
+  }
+}
+
 @media (min-width: 1024px) {
   /* Hero */
   .hero {
     height: 85vh;
     padding: 0 5%;
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+      -webkit-image-set(
+          url("../img/hero.webp") 1x,
+          url("../img/hero@2x.webp") 2x
+        );
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+      image-set(url("../img/hero.webp") 1x, url("../img/hero@2x.webp") 2x);
   }
   .hero-content h1 {
     font-size: 3.5rem;

@@ -25,26 +25,24 @@
       property="twitter:description"
       content="Створи власний стиль. Найвища якість бавовни та стійкий друк."
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="preload"
       as="image"
-      href="../img/hero-tablet.webp"
+      imagesrcset="../img/hero-mobile.webp 375w, ../img/hero-tablet.webp 768w, ../img/hero.webp 1024w"
       imagesizes="100vw"
       fetchpriority="high"
     />
-    <!-- <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    /> -->
+    <link
+      rel="preload"
+      href="../fonts/montserrat-v31-cyrillic_latin-700.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <link rel="stylesheet" href="../css/style.css" />
-
     <link rel="alternate" hreflang="pl" href="https://tvoysite.com/" />
     <link rel="alternate" hreflang="uk" href="https://tvoysite.com/ua/" />
     <link rel="alternate" hreflang="en" href="https://tvoysite.com/en/" />
-    <link rel="icon" href="../img/favicon.svg" type="image/svg+xml" />
-    <meta name="theme-color" content="#000000" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -119,7 +117,12 @@
             <li><a href="../en/index.html">EN</a></li>
           </ul>
         </div>
-        <button type="button" class="burger-btn" data-menu-open>
+        <button
+          type="button"
+          class="burger-btn"
+          data-menu-open
+          aria-label="Відкрити меню"
+        >
           <svg class="burger-icon" width="24" height="24">
             <use href="../img/icons.svg#icon-burger"></use>
           </svg>
@@ -128,7 +131,11 @@
 
       <div class="mobile-menu" data-menu>
         <div class="container mobile-menu-container">
-          <button class="mobile-menu-close" data-menu-close>
+          <button
+            class="mobile-menu-close"
+            data-menu-close
+            aria-label="Закрити меню"
+          >
             <svg class="mobile-menu-close-icon" width="8" height="8">
               <use href="../img/icons.svg#icon-close"></use>
             </svg>
@@ -412,6 +419,7 @@
                 name="name"
                 placeholder="Як до вас звертатися?"
                 required
+                autocomplete="name"
               />
             </div>
 
@@ -424,6 +432,7 @@
                 placeholder="+38 ___ ___ __ __"
                 required
                 minlength="9"
+                autocomplete="tel"
               />
             </div>
 
@@ -679,7 +688,12 @@
 
     <div id="success-modal" class="modal-overlay is-hidden">
       <div class="modal-content">
-        <button type="button" class="modal-close-btn" id="modal-close-btn">
+        <button
+          type="button"
+          class="modal-close-btn"
+          id="modal-close-btn"
+          aria-label="Zamknij powiadomienie"
+        >
           <svg width="12" height="12">
             <use href="../img/icons.svg#icon-close"></use>
           </svg>

@@ -1,103 +1,68 @@
-// 2. Находим элементы один раз
-const langSwitcher = document.querySelector(".lang-switcher");
-const langCurrent = document.querySelector(".lang-current");
-const langButtons = document.querySelectorAll(".lang-list button");
-const allTexts = document.querySelectorAll("[data-key]");
-
-// 3. Функция смены языка (выносим отдельно для чистоты)
-function changeLanguage(lang) {
-  allTexts.forEach((el) => {
-    const key = el.getAttribute("data-key");
-    if (translations[lang][key]) {
-      el.textContent = translations[lang][key];
-    }
-  });
-
-  langCurrent.textContent = lang.toUpperCase();
-  localStorage.setItem("selectedLang", lang);
-}
-
-// 4. Слушатели событий
-langCurrent.addEventListener("click", () => {
-  langSwitcher.classList.toggle("is-open");
-});
-
-langButtons.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const lang = btn.getAttribute("data-lang");
-    changeLanguage(lang);
-    langSwitcher.classList.remove("is-open");
-  });
-});
-
-// Закрыть, если кликнули мимо
-document.addEventListener("click", (e) => {
-  if (!langSwitcher.contains(e.target)) {
-    langSwitcher.classList.remove("is-open");
-  }
-});
-
+// 1. МОБИЛЬНОЕ МЕНЮ
 (() => {
   const refs = {
-    openModalBtn: document.querySelector("[data-menu-open]"),
-    closeModalBtn: document.querySelector("[data-menu-close]"),
-    modal: document.querySelector("[data-menu]"),
-    // Находим все ссылки внутри навигации мобильного меню
+    openMenuBtn: document.querySelector("[data-menu-open]"),
+    closeMenuBtn: document.querySelector("[data-menu-close]"),
+    menu: document.querySelector("[data-menu]"),
     menuLinks: document.querySelectorAll(".nav-list-mobile a"),
   };
 
-  refs.openModalBtn.addEventListener("click", toggleModal);
-  refs.closeModalBtn.addEventListener("click", toggleModal);
+  const toggleMenu = () => {
+    refs.menu.classList.toggle("is-open");
+    document.body.style.overflow = refs.menu.classList.contains("is-open")
+      ? "hidden"
+      : "";
+  };
 
-  // Добавляем слушатель событий на каждую ссылку
-  refs.menuLinks.forEach((link) => {
-    link.addEventListener("click", toggleModal);
-  });
-
-  function toggleModal() {
-    refs.modal.classList.toggle("is-open");
-
-    // Бонус: блокировка скролла страницы при открытом меню
-    if (refs.modal.classList.contains("is-open")) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-  }
+  refs.openMenuBtn?.addEventListener("click", toggleMenu);
+  refs.closeMenuBtn?.addEventListener("click", toggleMenu);
+  refs.menuLinks.forEach((link) => link.addEventListener("click", toggleMenu));
 })();
 
-document.querySelectorAll(".faq-card").forEach((targetDetail) => {
-  targetDetail.addEventListener("click", (e) => {
-    // Ждем микросекунду, чтобы атрибут open успел обновиться
-    setTimeout(() => {
-      if (targetDetail.open) {
-        document.querySelectorAll(".faq-card").forEach((detail) => {
-          if (detail !== targetDetail) {
-            detail.open = false;
-          }
-        });
-      }
-    }, 10);
+// 2. ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА (Логика открытия списка)
+const langCurrent = document.querySelector(".lang-current");
+const langSwitcher = document.querySelector(".lang-switcher");
+
+langCurrent?.addEventListener("click", () => {
+  langSwitcher.classList.toggle("is-open");
+});
+
+document.addEventListener("click", (e) => {
+  if (!langSwitcher?.contains(e.target)) {
+    langSwitcher?.classList.remove("is-open");
+  }
+});
+
+// 3. FAQ (Аккордеон: закрываем другие при открытии нового)
+document.querySelectorAll(".faq-card").forEach((el) => {
+  el.addEventListener("toggle", () => {
+    if (el.open) {
+      document.querySelectorAll(".faq-card").forEach((other) => {
+        if (other !== el && other.open) other.open = false;
+      });
+    }
   });
 });
 
-// фильтр ввода телефона
-
+// 4. ВАЛИДАЦИЯ ТЕЛЕФОНА (Только цифры и +)
 const phoneInput = document.getElementById("form-phone-input");
-
-phoneInput.addEventListener("input", (e) => {
-  // Оставляем только цифры и плюс
+phoneInput?.addEventListener("input", (e) => {
   e.target.value = e.target.value.replace(/[^\d+]/g, "");
 });
 
-// МОДАЛКА
+// 5. ОТПРАВКА ФОРМЫ И МОДАЛКА УСПЕХА
 const orderForm = document.querySelector('form[name="consultation-form"]');
 const successModal = document.getElementById("success-modal");
 const closeBtns = document.querySelectorAll("#modal-close-btn, #modal-ok-btn");
 
-// Обработка отправки
-orderForm.addEventListener("submit", (e) => {
-  e.preventDefault(); // Останавливаем перезагрузку страницы
+orderForm?.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  // Проверка валидности (minlength, pattern и т.д.)
+  if (!orderForm.checkValidity()) {
+    orderForm.reportValidity();
+    return;
+  }
 
   const formData = new FormData(orderForm);
 
@@ -107,22 +72,18 @@ orderForm.addEventListener("submit", (e) => {
     body: new URLSearchParams(formData).toString(),
   })
     .then(() => {
-      // Показываем модалку
-      successModal.classList.remove("is-hidden");
-      orderForm.reset(); // Очищаем форму
+      successModal?.classList.remove("is-hidden");
+      orderForm.reset();
     })
-    .catch((error) => alert("Ошибка отправки: " + error));
+    .catch((error) => console.error("Ошибка отправки:", error));
 });
 
-// Закрытие модалки
+// Закрытие модалки по кнопкам
 closeBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    successModal.classList.add("is-hidden");
-  });
+  btn.addEventListener("click", () => successModal?.classList.add("is-hidden"));
 });
 
-successModal.addEventListener("click", (e) => {
-  if (e.target === successModal) {
-    successModal.classList.add("is-hidden");
-  }
+// Закрытие модалки по клику на фон
+successModal?.addEventListener("click", (e) => {
+  if (e.target === successModal) successModal.classList.add("is-hidden");
 });

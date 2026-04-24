@@ -33,7 +33,6 @@
     <link
       rel="preload"
       as="image"
-      href="./img/hero-tablet.webp"
       imagesrcset="./img/hero-mobile.webp 375w, ./img/hero-tablet.webp 768w, ./img/hero.webp 1024w"
       imagesizes="100vw"
       fetchpriority="high"
@@ -123,7 +122,12 @@
             <li><a href="/en/">EN</a></li>
           </ul>
         </div>
-        <button type="button" class="burger-btn" data-menu-open>
+        <button
+          type="button"
+          class="burger-btn"
+          data-menu-open
+          aria-label="Otwórz menu"
+        >
           <svg class="burger-icon" width="24" height="24">
             <use href="./img/icons.svg#icon-burger"></use>
           </svg>
@@ -132,7 +136,11 @@
 
       <div class="mobile-menu" data-menu>
         <div class="container mobile-menu-container">
-          <button class="mobile-menu-close" data-menu-close>
+          <button
+            class="mobile-menu-close"
+            data-menu-close
+            aria-label="Zamknij menu"
+          >
             <svg class="mobile-menu-close-icon" width="8" height="8">
               <use href="./img/icons.svg#icon-close"></use>
             </svg>
@@ -409,6 +417,7 @@
                 name="name"
                 placeholder="Jak się do Ciebie zwracać?"
                 required
+                autocomplete="name"
               />
             </div>
 
@@ -421,6 +430,9 @@
                 placeholder="+48 ___ ___ ___"
                 required
                 minlength="9"
+                pattern=".{9,}"
+                title="Numer powinien zawierać co najmniej 9 znaków"
+                autocomplete="tel"
               />
             </div>
 
@@ -671,7 +683,12 @@
 
     <div id="success-modal" class="modal-overlay is-hidden">
       <div class="modal-content">
-        <button type="button" class="modal-close-btn" id="modal-close-btn">
+        <button
+          type="button"
+          class="modal-close-btn"
+          id="modal-close-btn"
+          aria-label="Zamknij powiadomienie"
+        >
           <svg width="12" height="12">
             <use href="./img/icons.svg#icon-close"></use>
           </svg>

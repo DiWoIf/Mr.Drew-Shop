@@ -406,6 +406,10 @@ img {
     gap: 20px;
   }
 
+  .nav-link {
+    color: var(--light-bg);
+  }
+
   .burger-btn,
   .mobile-menu {
     display: none; /* Прячем всё мобильное */
@@ -919,27 +923,6 @@ img {
   display: block;
   transition: opacity 0.2s;
   fill: #020300;
-}
-
-.social-icon {
-  width: 40px;
-  height: 40px;
-  background-color: #f4f4fd;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  color: #2e2f42;
-  font-size: 12px;
-  font-weight: 600;
-  transition: all 250ms ease;
-}
-
-.social-icon:hover {
-  background-color: #404bbf;
-  color: #fff;
-  transform: translateY(-3px);
 }
 
 .footer-divider {

@@ -32,13 +32,6 @@
     />
     <link
       rel="preload"
-      as="image"
-      imagesrcset="./img/hero-mobile.webp 375w, ./img/hero-tablet.webp 768w, ./img/hero.webp 1024w"
-      imagesizes="100vw"
-      fetchpriority="high"
-    />
-    <link
-      rel="preload"
       href="./fonts/montserrat-v31-cyrillic_latin-700.woff2"
       as="font"
       type="font/woff2"
@@ -150,6 +143,18 @@
             <use href="./img/icons.svg#icon-burger"></use>
           </svg>
         </button>
+        <nav class="nav-desktop">
+          <ul>
+            <li>
+              <a href="#categories" class="nav-link">Realizacje</a>
+            </li>
+            <li><a href="#process" class="nav-link">Jak to działa</a></li>
+            <li><a href="#order-form" class="nav-link">Kontakt</a></li>
+            <li>
+              <a href="#faq" class="nav-link">FAQ</a>
+            </li>
+          </ul>
+        </nav>
       </div>
 
       <div class="mobile-menu" data-menu>
@@ -250,18 +255,6 @@
           </ul>
         </div>
       </div>
-      <nav class="nav-desktop">
-        <ul>
-          <li>
-            <a href="#categories">Realizacje</a>
-          </li>
-          <li><a href="#process">Jak to działa</a></li>
-          <li><a href="#order-form">Kontakt / Forma</a></li>
-          <li>
-            <a href="#faq">FAQ</a>
-          </li>
-        </ul>
-      </nav>
     </header>
 
     <section class="hero">

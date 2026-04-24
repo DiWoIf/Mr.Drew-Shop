@@ -24,12 +24,15 @@ const langCurrent = document.querySelector(".lang-current");
 const langSwitcher = document.querySelector(".lang-switcher");
 
 langCurrent?.addEventListener("click", () => {
-  langSwitcher.classList.toggle("is-open");
+  const isOpen = langSwitcher.classList.toggle("is-open");
+  // Добавляем эту строчку для Lighthouse:
+  langCurrent.setAttribute("aria-expanded", isOpen);
 });
 
 document.addEventListener("click", (e) => {
   if (!langSwitcher?.contains(e.target)) {
     langSwitcher?.classList.remove("is-open");
+    langCurrent?.setAttribute("aria-expanded", "false");
   }
 });
 

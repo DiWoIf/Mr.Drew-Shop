@@ -90,3 +90,9 @@ closeBtns.forEach((btn) => {
 successModal?.addEventListener("click", (e) => {
   if (e.target === successModal) successModal.classList.add("is-hidden");
 });
+
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && !successModal.classList.contains("is-hidden")) {
+    successModal.classList.add("is-hidden");
+  }
+});

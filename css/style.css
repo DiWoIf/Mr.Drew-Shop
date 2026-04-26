@@ -116,11 +116,6 @@ img {
   }
 }
 
-.btn-primary {
-  padding: 12px 24px;
-  width: 100%;
-}
-
 .btn-secondary {
   padding: 10px 0;
   width: 100%;
@@ -694,7 +689,9 @@ img {
 }
 
 .btn-submit {
-  width: 100%;
+  display: block;
+  margin: 0 auto;
+  max-width: auto;
   padding: 14px;
   background-color: #020300; /* Твой глубокий черный */
   color: #f5f5f5; /* Твой мягкий белый */
@@ -771,13 +768,9 @@ img {
 }
 
 @media (min-width: 768px) {
-  .contact-grid {
+  .messenger-grid {
+    display: grid;
     grid-template-columns: 1fr 1fr;
-    align-items: start;
-  }
-
-  .btn-primary {
-    width: auto;
   }
 }
 

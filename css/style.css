@@ -100,22 +100,6 @@ img {
   text-align: center;
 }
 
-@media (min-width: 768px) {
-  .section {
-    padding: 60px 40px;
-  }
-  .section h2 {
-    font-size: 1.8rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  section {
-    padding-top: var(--section-padding-desktop);
-    padding-bottom: var(--section-padding-desktop);
-  }
-}
-
 .btn-secondary {
   padding: 10px 0;
   width: 100%;
@@ -665,7 +649,7 @@ img {
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 32px;
+  gap: 20px;
 }
 
 /* Стили полей (в стиле твоих карточек) */
@@ -691,7 +675,6 @@ img {
 .btn-submit {
   display: block;
   margin: 0 auto;
-  max-width: auto;
   padding: 14px;
   background-color: #020300; /* Твой глубокий черный */
   color: #f5f5f5; /* Твой мягкий белый */
@@ -771,6 +754,29 @@ img {
   .messenger-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .messenger-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Две колонки */
+    grid-auto-rows: 80px; /* Все кнопки будут высотой 80px */
+    gap: 28px;
+    margin: 40px;
+  }
+
+  .ms-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* Растянется по высоте сетки */
+    padding: 10px 20px; /* Обычный комфортный падинг */
+    /* остальное (border, background) оставляешь как было */
+    font-size: 24px;
   }
 }
 
@@ -938,6 +944,12 @@ img {
   color: #8e8f99;
 }
 
+.privacy-link {
+  display: inline-block;
+  color: #888; /* Спокойный серый */
+  text-decoration: none;
+  font-size: 12px;
+}
 /* Логотипы оплаты/доставки */
 .trust-badges {
   display: flex;
@@ -1076,4 +1088,58 @@ img {
 
 .modal-ok-btn:hover {
   background-color: #333;
+}
+
+/* --- Privacy Policy Page --- */
+
+.privacy-container {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 80px 20px;
+}
+
+.privacy-back-link {
+  display: inline-block;
+  margin-bottom: 40px;
+  color: #888;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.privacy-back-link:hover {
+  color: #000;
+}
+
+.privacy-main-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.privacy-subtitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 40px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.privacy-description {
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .privacy-container {
+    padding: 40px 20px;
+  }
+  .privacy-main-title {
+    font-size: 28px;
+  }
 }

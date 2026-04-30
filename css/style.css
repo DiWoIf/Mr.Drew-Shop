@@ -663,6 +663,7 @@ img {
   background-color: #fcfcfc;
   font-family: inherit;
   transition: border-color 250ms ease;
+  resize: none;
 }
 
 .form-group input:focus,
@@ -683,6 +684,7 @@ img {
   font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.05em;
+
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -786,6 +788,7 @@ img {
   gap: 16px;
   display: grid;
   grid-template-columns: 1fr;
+  align-items: start;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -795,6 +798,16 @@ img {
   border: 1px solid #e7e9fc;
   border-radius: 12px;
   transition: box-shadow 300ms ease;
+  overflow: hidden;
+}
+
+.faq-card summary {
+  min-height: 80px; /* Подберите высоту, чтобы влез самый длинный вопрос в 2-3 строки */
+  display: flex;
+  align-items: center; /* Центрирует текст вопроса по вертикали */
+  padding: 20px;
+  cursor: pointer;
+  list-style: none;
 }
 
 .faq-card[open] {
@@ -832,14 +845,15 @@ img {
   display: grid;
   grid-template-rows: 0fr;
   transition: grid-template-rows 300ms ease;
+  overflow: hidden;
 }
 
-.faq-card[open] .faq-answer-wrapper {
+.faq-card.is-open .faq-answer-wrapper {
   grid-template-rows: 1fr;
 }
 
 .faq-answer-inner {
-  overflow: hidden;
+  min-height: 0;
 }
 
 /* Стили самого текста */

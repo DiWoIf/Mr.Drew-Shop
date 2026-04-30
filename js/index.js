@@ -96,3 +96,27 @@ window.addEventListener("keydown", (e) => {
     successModal.classList.add("is-hidden");
   }
 });
+
+document.querySelectorAll(".faq-card").forEach((card) => {
+  const summary = card.querySelector("summary");
+
+  summary.addEventListener("click", (e) => {
+    e.preventDefault(); // Останавливаем мгновенное открытие/закрытие
+
+    if (card.hasAttribute("open")) {
+      // Закрытие
+      card.classList.remove("is-open");
+      // Ждем окончания анимации (300ms) перед тем как убрать атрибут open
+      setTimeout(() => {
+        card.removeAttribute("open");
+      }, 300);
+    } else {
+      // Открытие
+      card.setAttribute("open", "");
+      // Минимальная задержка, чтобы браузер успел заметить атрибут и запустил transition
+      setTimeout(() => {
+        card.classList.add("is-open");
+      }, 10);
+    }
+  });
+});

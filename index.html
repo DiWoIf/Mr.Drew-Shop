@@ -65,7 +65,16 @@
       imagesrcset="./img/hero.webp 1x, ./img/hero@2x.webp 2x"
       media="(min-width: 1024px)"
     />
-    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="preload"
+      href="./css/style.css"
+      as="style"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
+    />
+    <noscript><link rel="stylesheet" href="./css/style.css" /></noscript>
     <link rel="alternate" hreflang="pl" href="https://mrdrewstore.pl/" />
     <link rel="alternate" hreflang="uk" href="https://mrdrewstore.pl/ua/" />
     <link rel="alternate" hreflang="en" href="https://mrdrewstore.pl/en/" />

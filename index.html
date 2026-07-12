@@ -65,16 +65,7 @@
       imagesrcset="./img/hero.webp 1x, ./img/hero@2x.webp 2x"
       media="(min-width: 1024px)"
     />
-    <link
-      rel="preload"
-      href="./css/style.css"
-      as="style"
-      onload="
-        this.onload = null;
-        this.rel = 'stylesheet';
-      "
-    />
-    <noscript><link rel="stylesheet" href="./css/style.css" /></noscript>
+    <link rel="stylesheet" href="./css/style.css" />
     <link rel="alternate" hreflang="pl" href="https://mrdrewstore.pl/" />
     <link rel="alternate" hreflang="uk" href="https://mrdrewstore.pl/ua/" />
     <link rel="alternate" hreflang="en" href="https://mrdrewstore.pl/en/" />
@@ -295,6 +286,28 @@
     </header>
 
     <section class="hero">
+      <picture class="hero-bg">
+        <source
+          srcset="./img/hero-mobile.webp 1x, ./img/hero-tablet.webp 2x"
+          media="(max-width: 767px)"
+        />
+        <source
+          srcset="./img/hero-tablet.webp 1x, ./img/hero@2x.webp 2x"
+          media="(min-width: 768px) and (max-width: 1023px)"
+        />
+        <source
+          srcset="./img/hero.webp 1x, ./img/hero@2x.webp 2x"
+          media="(min-width: 1024px)"
+        />
+        <img
+          src="./img/hero-mobile.webp"
+          alt=""
+          class="hero-bg-img"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </picture>
+
       <div class="hero-content">
         <p class="hero-overline">Studio druku personalizowanego</p>
         <h1>Styl rodzi się z idei</h1>

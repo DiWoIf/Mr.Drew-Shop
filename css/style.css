@@ -404,33 +404,30 @@ img {
 /* Hero (Mobile) */
 .hero {
   height: 70vh;
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("../img/hero-tablet.webp");
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    -webkit-image-set(
-        url("../img/hero-mobile.webp") 1x,
-        url("../img/hero-tablet.webp") 2x
-      );
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    image-set(
-      url("../img/hero-mobile.webp") 1x,
-      url("../img/hero-tablet.webp") 2x
-    );
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
+  position: relative;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 20px;
-  position: relative;
-  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 .hero::before {
@@ -440,16 +437,13 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-
-  /* 0.2 — это 20% белого цвета. Картинка станет чуть светлее, но останется четкой */
-  background: rgba(0, 0, 0, 0.4);
-
-  z-index: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
 }
 
 .hero-content {
   position: relative;
-  z-index: 1; /* Обязательно, чтобы текст был выше высветляющего слоя */
+  z-index: 2; /* Обязательно, чтобы текст был выше высветляющего слоя */
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   color: var(--light-bg);
 }
@@ -476,38 +470,7 @@ img {
   margin-top: 15px;
 }
 
-@media (min-width: 768px) {
-  .hero {
-    background-image:
-      linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-      -webkit-image-set(
-          url("../img/hero-tablet.webp") 1x,
-          url("../img/hero@2x.webp") 2x
-        );
-    background-image:
-      linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-      image-set(
-        url("../img/hero-tablet.webp") 1x,
-        url("../img/hero@2x.webp") 2x
-      );
-  }
-}
-
 @media (min-width: 1024px) {
-  /* Hero */
-  .hero {
-    height: 85vh;
-    padding: 0 5%;
-    background-image:
-      linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-      -webkit-image-set(
-          url("../img/hero.webp") 1x,
-          url("../img/hero@2x.webp") 2x
-        );
-    background-image:
-      linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-      image-set(url("../img/hero.webp") 1x, url("../img/hero@2x.webp") 2x);
-  }
   .hero-content h1 {
     font-size: 3.5rem;
     max-width: 700px;

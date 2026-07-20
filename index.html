@@ -47,6 +47,7 @@
     <link
       rel="preload"
       as="image"
+      fetchpriority="high"
       href="./img/hero-mobile.webp"
       imagesrcset="./img/hero-mobile.webp 1x, ./img/hero-tablet.webp 2x"
       media="(max-width: 767px)"
@@ -54,6 +55,7 @@
     <link
       rel="preload"
       as="image"
+      fetchpriority="high"
       href="./img/hero-tablet.webp"
       imagesrcset="./img/hero-tablet.webp 1x, ./img/hero@2x.webp 2x"
       media="(min-width: 768px) and (max-width: 1023px)"
@@ -61,6 +63,7 @@
     <link
       rel="preload"
       as="image"
+      fetchpriority="high"
       href="./img/hero.webp"
       imagesrcset="./img/hero.webp 1x, ./img/hero@2x.webp 2x"
       media="(min-width: 1024px)"
@@ -827,7 +830,7 @@
         <button type="button" class="modal-ok-btn" id="modal-ok-btn">OK</button>
       </div>
     </div>
-    <script src="./js/index.js"></script>
+    <script src="./js/index.js" defer></script>
 
     <script>
       window.addEventListener("load", () => {

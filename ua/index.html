@@ -42,6 +42,7 @@
     <link
       rel="preload"
       as="image"
+      fetchpriority="high"
       href="../img/hero-mobile.webp"
       imagesrcset="../img/hero-mobile.webp 1x, ../img/hero-tablet.webp 2x"
       media="(max-width: 767px)"
@@ -49,6 +50,7 @@
     <link
       rel="preload"
       as="image"
+      fetchpriority="high"
       href="../img/hero-tablet.webp"
       imagesrcset="../img/hero-tablet.webp 1x, ../img/hero@2x.webp 2x"
       media="(min-width: 768px) and (max-width: 1023px)"
@@ -56,6 +58,7 @@
     <link
       rel="preload"
       as="image"
+      fetchpriority="high"
       href="../img/hero.webp"
       imagesrcset="../img/hero.webp 1x, ../img/hero@2x.webp 2x"
       media="(min-width: 1024px)"
@@ -129,6 +132,9 @@
             src="../img/logo.webp"
             class="logo-img"
             alt="Mr. Drew - головна сторінка"
+            width="120"
+            height="32"
+            decoding="async"
         /></a>
       </div>
 
@@ -289,6 +295,28 @@
     </header>
 
     <section class="hero">
+      <picture class="hero-bg">
+        <source
+          srcset="../img/hero-mobile.webp 1x, ../img/hero-tablet.webp 2x"
+          media="(max-width: 767px)"
+        />
+        <source
+          srcset="../img/hero-tablet.webp 1x, ../img/hero@2x.webp 2x"
+          media="(min-width: 768px) and (max-width: 1023px)"
+        />
+        <source
+          srcset="../img/hero.webp 1x, ../img/hero@2x.webp 2x"
+          media="(min-width: 1024px)"
+        />
+        <img
+          src="../img/hero-mobile.webp"
+          alt=""
+          class="hero-bg-img"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </picture>
+
       <div class="hero-content">
         <p class="hero-overline">Студія персоналізованого друку</p>
         <h1>Стиль народжується з ідеї</h1>
@@ -329,7 +357,11 @@
           <div class="img-placeholder">
             <picture>
               <source
-                srcset="../img/smile.webp 400w, ../img/smile@2x.webp 800w"
+                srcset="
+                  ../img/smile.webp     400w,
+                  ../img/smile-600.webp 600w,
+                  ../img/smile@2x.webp  800w
+                "
                 sizes="(max-width: 767px) 80vw, (max-width: 1023px) 50vw, 25vw"
                 type="image/webp"
               />
@@ -348,7 +380,11 @@
           <div class="img-placeholder">
             <picture>
               <source
-                srcset="../img/glass.webp 400w, ../img/glass@2x.webp 800w"
+                srcset="
+                  ../img/glass.webp     400w,
+                  ../img/glass-600.webp 600w,
+                  ../img/glass@2x.webp  800w
+                "
                 sizes="(max-width: 767px) 80vw, (max-width: 1023px) 50vw, 25vw"
                 type="image/webp"
               />
@@ -367,7 +403,11 @@
           <div class="img-placeholder">
             <picture>
               <source
-                srcset="../img/bag.webp 400w, ../img/bag@2x.webp 800w"
+                srcset="
+                  ../img/bag.webp     400w,
+                  ../img/bag-600.webp 600w,
+                  ../img/bag@2x.webp  800w
+                "
                 sizes="(max-width: 767px) 80vw, (max-width: 1023px) 50vw, 25vw"
                 type="image/webp"
               />
@@ -386,7 +426,11 @@
           <div class="img-placeholder">
             <picture>
               <source
-                srcset="../img/anime.webp 400w, ../img/anime@2x.webp 800w"
+                srcset="
+                  ../img/anime.webp     400w,
+                  ../img/anime-600.webp 600w,
+                  ../img/anime@2x.webp  800w
+                "
                 sizes="(max-width: 767px) 80vw, (max-width: 1023px) 50vw, 25vw"
                 type="image/webp"
               />
@@ -790,10 +834,15 @@
         <button type="button" class="modal-ok-btn" id="modal-ok-btn">OK</button>
       </div>
     </div>
-    <script src="../js/index.js"></script>
+    <script src="../js/index.js" defer></script>
 
     <script>
-      window.addEventListener("load", () => {
+      let analyticsLoaded = false;
+
+      function loadAnalytics() {
+        if (analyticsLoaded) return;
+        analyticsLoaded = true;
+
         const s1 = document.createElement("script");
         s1.async = true;
         s1.src = "https://www.googletagmanager.com/gtag/js?id=G-KKGRZ2KLPZ";
@@ -817,7 +866,15 @@
           y = l.getElementsByTagName(r)[0];
           y.parentNode.insertBefore(t, y);
         })(window, document, "clarity", "script", "wjt2ygruwv");
-      });
+      }
+
+      ["scroll", "click", "touchstart", "mousemove", "keydown"].forEach((evt) =>
+        window.addEventListener(evt, loadAnalytics, {
+          once: true,
+          passive: true,
+        }),
+      );
+      setTimeout(loadAnalytics, 5000);
     </script>
   </body>
 </html>

@@ -135,6 +135,31 @@
     </script>
   </head>
   <body id="main">
+    <div class="cookie-banner" id="cookie-banner" hidden>
+      <div class="cookie-banner-content">
+        <p class="cookie-banner-text">
+          We use cookies to analyze site traffic (Google Analytics, Microsoft
+          Clarity). You can accept or decline.
+          <a href="./privacy-en.html">Privacy Policy</a>
+        </p>
+        <div class="cookie-banner-actions">
+          <button
+            type="button"
+            class="cookie-btn cookie-btn-decline"
+            id="cookie-decline"
+          >
+            Decline
+          </button>
+          <button
+            type="button"
+            class="cookie-btn cookie-btn-accept"
+            id="cookie-accept"
+          >
+            Accept
+          </button>
+        </div>
+      </div>
+    </div>
     <header class="header">
       <div class="logo">
         <a href="../index.html"
@@ -848,12 +873,12 @@
     <script src="../js/index.js" defer></script>
 
     <script>
-      let analyticsLoaded = false;
+      const COOKIE_KEY = "cookie_consent"; // "accepted" | "declined"
+      const banner = document.getElementById("cookie-banner");
+      const acceptBtn = document.getElementById("cookie-accept");
+      const declineBtn = document.getElementById("cookie-decline");
 
       function loadAnalytics() {
-        if (analyticsLoaded) return;
-        analyticsLoaded = true;
-
         const s1 = document.createElement("script");
         s1.async = true;
         s1.src = "https://www.googletagmanager.com/gtag/js?id=G-KKGRZ2KLPZ";
@@ -879,13 +904,25 @@
         })(window, document, "clarity", "script", "wjt2ygruwv");
       }
 
-      ["scroll", "click", "touchstart", "mousemove", "keydown"].forEach((evt) =>
-        window.addEventListener(evt, loadAnalytics, {
-          once: true,
-          passive: true,
-        }),
-      );
-      setTimeout(loadAnalytics, 5000);
+      const consent = localStorage.getItem(COOKIE_KEY);
+
+      if (consent === "accepted") {
+        loadAnalytics();
+      } else if (consent === null) {
+        banner.hidden = false;
+      }
+      // если "declined" — ничего не делаем, баннер не показываем, аналитику не грузим
+
+      acceptBtn?.addEventListener("click", () => {
+        localStorage.setItem(COOKIE_KEY, "accepted");
+        banner.hidden = true;
+        loadAnalytics();
+      });
+
+      declineBtn?.addEventListener("click", () => {
+        localStorage.setItem(COOKIE_KEY, "declined");
+        banner.hidden = true;
+      });
     </script>
   </body>
 </html>
